@@ -24,19 +24,22 @@ cargo install --path .
 To use `cargo-cpack`, navigate to your Rust project directory and run:
 
 ```sh
-cargo-cpack <path-to-your-bin-directory>
+cargo cpack [options] <path>
 ```
 
-### Command Line Arguments
+### Arguments
 
-- `path`: The path to the source to be packed.
-- `--format` (optional): Formats the output code if set to `true`.
-- `--gen_code_only` (optional): Generates only the code required for the modules identified to be used in `bin` directory.
+- <`path`>: The path to the source to be packed.
+
+### Options
+
+- `--format`, `-f` (optional): Formats the output code if set to `true`.
+- `--gen-code-only`, `-g` (optional): Generates only the code required for the modules identified to be used in `bin` directory.
 
 Example usage:
 
 ```sh
-cargo-cpack ./src/bin/my_solution.rs 
+cargo cpack ./src/bin/my_solution.rs 
 ```
 
 ## Output
@@ -44,5 +47,5 @@ cargo-cpack ./src/bin/my_solution.rs
 The tool will output the packed source to stdout. You can redirect this output to a file using the shell redirection operator (`>`), for example:
 
 ```sh
-cargo-cpack -f ./src/bin/my_solution.rs > packed_solution.rs
+cargo cpack -f ./src/bin/my_solution.rs > packed_solution.rs
 ```
