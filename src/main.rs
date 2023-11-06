@@ -4,7 +4,7 @@ mod format;
 mod package;
 mod parse_target;
 
-use clap::Parser;
+use clap::{Args, Parser};
 use package::{parse_mod_tree, ModTree};
 use parse_target::parse_target_dependencies;
 use proc_macro2::{Ident, TokenStream};
@@ -15,10 +15,17 @@ use cargo::{find_cargo_toml, parse_package_name};
 
 use crate::dependency::ModPath;
 
+#[derive(Parser)] // requires `derive` feature
+#[command(name = "cargo")]
+#[command(bin_name = "cargo")]
+enum CargoCli {
+    Cpack(CpackArgs),
+}
+
 /// Parses the source code in the bin directory and bundles it into a single file.
-#[derive(Parser, Debug)]
+#[derive(Args, Debug)]
 #[command(author, version, about, long_about = None)]
-struct Args {
+struct CpackArgs {
     /// Path to the source to be packed.
     path: String,
 
@@ -34,7 +41,7 @@ struct Args {
 }
 
 fn main() {
-    let args = Args::parse();
+    let CargoCli::Cpack(args) = CargoCli::parse();
     match process(args) {
         Ok(()) => {}
         Err(e) => {
@@ -43,7 +50,7 @@ fn main() {
     }
 }
 
-fn process(args: Args) -> Result<(), Box<dyn std::error::Error>> {
+fn process(args: CpackArgs) -> Result<(), Box<dyn std::error::Error>> {
     let path = Path::new(&args.path);
 
     // Cargo.tomlを探す
