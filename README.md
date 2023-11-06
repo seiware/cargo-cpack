@@ -49,3 +49,8 @@ The tool will output the packed source to stdout. You can redirect this output t
 ```sh
 cargo cpack -f ./src/bin/my_solution.rs > packed_solution.rs
 ```
+
+## Example
+
+See the Example project for an actual usage example.
+[Example project](./example)

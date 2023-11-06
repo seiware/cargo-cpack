@@ -49,3 +49,8 @@ cargo cpack -f ./src/bin/my_solution.rs
 ```sh
 cargo cpack -f ./src/bin/my_solution.rs > packed_solution.rs
 ```
+
+## Example
+
+実際の使用例はExample Projectを参照してください。
+[Example project](./example/README-jp.md)
