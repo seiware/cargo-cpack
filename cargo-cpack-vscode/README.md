@@ -30,18 +30,3 @@ This extension contributes the following commands:
 
 - File paths with special characters may not be processed correctly and require additional handling.
 - This extension assumes that the `cargo-cpack` command can run without additional arguments or interactive input.
-
-## Release Notes
-
-### 1.0.0
-
-Initial release of Cargo CPack Clipboard Copier.
-
-#### Features
-
-- Run `cargo-cpack` on the current file.
-- Copy the command's output to clipboard.
-
----
-
-Enjoy using Cargo CPack Clipboard Copier!

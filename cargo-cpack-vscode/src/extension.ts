@@ -14,7 +14,7 @@ export function activate(context: vscode.ExtensionContext) {
 		const filePath = editor.document.uri.fsPath;
 
 		// cargo-cpack コマンドを実行する
-		exec(`cargo-cpack -f ${filePath}`, (error, stdout, stderr) => {
+		exec(`cargo cpack -f ${filePath}`, (error, stdout, stderr) => {
 			if (error) {
 				vscode.window.showErrorMessage(`Error: ${error.message}`);
 				return;
